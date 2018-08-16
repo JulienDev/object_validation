@@ -1,0 +1,67 @@
+[
+  {
+    "name":"Laurent Delahousse",
+    "age":48,
+    "description":"Meilleur présentateur TV",
+    "shows":[
+      {
+        "name":"JT 20h",
+        "channel":"France 2"
+      },
+      {
+        "name":"Un jour un destin",
+        "channel":"France 2"
+      }
+    ],
+    "spouse":{
+      "name":"Alice Taglioni"
+    }
+  },
+  {
+    "name":"Leila Kaddour",
+    "age":38,
+    "description":"Présentatrice la plus cool",
+    "shows":[
+      {
+        "name":"JT 13h",
+        "channel":"France 2"
+      },
+      {
+        "name":"Victoires de la musique classique",
+        "channel":"France 3"
+      },
+      {
+        "name":"La Bande originale",
+        "channel":"France Inter"
+      }
+    ]
+  },
+  {
+    "name":"Jean-Pierre Pernaut",
+    "age":68,
+    "description":"JPP",
+    "shows":null
+  },
+  {
+    "name":"Patrick Poivre d'Arvor",
+    "age":70,
+    "description":null,
+    "shows":[
+      {
+        "name":"JT 20h",
+        "channel":"TF1"
+      }
+    ]
+  },
+  {
+    "name":"Claire Chazal",
+    "age":61,
+    "description":"A interviewé Dominique Strauss-Kahn",
+    "shows":[
+      {
+        "name":"JT 20h",
+        "channel":null
+      }
+    ]
+  }
+]
