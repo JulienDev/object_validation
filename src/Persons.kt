@@ -1,5 +1,6 @@
 import java.io.File
-import com.google.gson.GsonBuilder
+import rx.Single
+import rx.schedulers.Schedulers
 
 //NETWORK MODEL
 data class PersonWS(
@@ -30,7 +31,7 @@ data class ShowEntity(
 
 class PersonsMapper {
 
-    fun convert(personsWS: Array<PersonWS>): List<PersonEntity> {
+    fun convert(personsWS: Array<PersonWS>): Single<List<PersonEntity>> {
         val persons = arrayListOf<PersonEntity>()
         personsWS.forEach { personWS ->
             try {
@@ -38,9 +39,10 @@ class PersonsMapper {
                 persons.add(personEntity)
             } catch (e: Exception) {
                 e.printStackTrace()
+                return Single.error(e)
             }
         }
-        return persons
+        return Single.just(persons)
     }
 
     private fun convert(personWS: PersonWS): PersonEntity {
@@ -63,11 +65,17 @@ class PersonsMapper {
 }
 
 fun main(args: Array<String>) {
-    val gson = GsonBuilder().setPrettyPrinting().create()
-    val fileContent = readFileAsLinesUsingReadLines("persons.json")
-    val personsWS = gson.fromJson(fileContent, Array<PersonWS>::class.java)
-    val personsEntity = PersonsMapper().convert(personsWS)
-    println(gson.toJson(personsEntity))
+    PersonsProvider().getRetrofit().getPersons()
+            .flatMapSingle {
+                PersonsMapper().convert(it)
+            }
+            .subscribeOn(Schedulers.io())
+            .toBlocking()
+            .subscribe({
+                println(it)
+            },{
+                it.printStackTrace()
+            })
 }
 
 //UTIL
