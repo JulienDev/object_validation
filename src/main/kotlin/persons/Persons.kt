@@ -39,7 +39,7 @@ class PersonsMapper {
                 persons.add(personEntity)
             } catch (e: Exception) {
                 e.printStackTrace()
-                return Single.error(e)
+                //return Single.error(e)
             }
         }
         return Single.just(persons)

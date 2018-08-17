@@ -1,0 +1,31 @@
+buildscript {
+    ext.kotlin_version = '1.2.60'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'kotlin'
+
+mainClassName = 'persons.Persons.kt'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.google.code.gson:gson:2.8.5"
+    compile "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    compile "com.squareup.retrofit2:adapter-rxjava:2.4.0"
+    compile "com.squareup.retrofit2:converter-gson:2.4.0"
+    compile "com.squareup.retrofit2:retrofit:2.4.0"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
